@@ -1,0 +1,28 @@
+{
+  "name": "The Floor is Hot Lava",
+  "authors": [
+    "Jamie1x <jkennedy1x@gmail.com>"
+  ],
+  "description": "The Floor is Hot Lava game for COMP392",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "https://github.com/Jamie1x/Final-FloorIsHotLava",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "Scripts/lib"
+  ],
+  "dependencies": {
+    "three.js": "threejs#*",
+    "stats.js": "*",
+    "Physijs": "physijs#*",
+    "EaselJS": "^0.8.2",
+    "TweenJS": "^0.6.2",
+    "SoundJS": "^0.6.2",
+    "PreloadJS": "^0.6.2"
+  }
+}
