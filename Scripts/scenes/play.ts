@@ -161,24 +161,6 @@ module scenes {
         }
 
         private addLight(): void {
-            /*// Spot Light
-            this.spotLight = new SpotLight(0xffffff);
-            this.spotLight.position.set(20, 40, -15);
-            this.spotLight.castShadow = true;
-            this.spotLight.intensity = 2;
-            this.spotLight.lookAt(new Vector3(0, 0, 0));
-            this.spotLight.shadowCameraNear = 2;
-            this.spotLight.shadowCameraFar = 200;
-            this.spotLight.shadowCameraLeft = -5;
-            this.spotLight.shadowCameraRight = 5;
-            this.spotLight.shadowCameraTop = 5;
-            this.spotLight.shadowCameraBottom = -5;
-            this.spotLight.shadowMapWidth = 2048;
-            this.spotLight.shadowMapHeight = 2048;
-            this.spotLight.shadowDarkness = 0.5;
-            this.spotLight.name = "Spot Light";
-            this.add(this.spotLight);*/
-
             this.ambientLight = new AmbientLight(0xf0f0f0);
             this.add(this.ambientLight);
         }
@@ -193,7 +175,7 @@ module scenes {
             this.groundTextureNormal = new THREE.TextureLoader().load('../../Assets/images/lavaMap.png');
             this.groundTextureNormal.wrapS = THREE.RepeatWrapping;
             this.groundTextureNormal.wrapT = THREE.RepeatWrapping;
-            this.groundTexture.repeat.set(8, 16);
+            this.groundTextureNormal.repeat.set(8, 16);
 
             this.groundMaterial = new PhongMaterial();
             this.groundMaterial.map = this.groundTexture;
@@ -536,7 +518,7 @@ module scenes {
             //randomly generate coins and blocks
             this.addLight();
             this.addGround();
-            this.addWalls()
+            this.addWalls();
             this.addPlayer();
             this.addStartPlatform();
             this.addBlocks();

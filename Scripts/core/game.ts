@@ -59,7 +59,6 @@ var assets: createjs.LoadQueue;
 var manifest = [
     { id: "land", src: "../../Assets/audio/Land.wav" },
     { id: "hit", src: "../../Assets/audio/hit.wav" },
-    { id: "enemy", src: "../../Assets/audio/enemy.wav" },
     { id: "coin", src: "../../Assets/audio/coin.mp3" },
     { id: "jump", src: "../../Assets/audio/Jump.wav" },
     { id: "StartButton", src: "../../Assets/images/StartButton.png" },
