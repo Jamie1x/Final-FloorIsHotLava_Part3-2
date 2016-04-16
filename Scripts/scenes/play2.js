@@ -74,8 +74,6 @@ var scenes;
          */
         Play2.prototype.setupScoreboard = function () {
             // initialize  score and health values
-            //this.score = 0;
-            //this.health = 3;
             // Add health Label
             this.healthLabel = new createjs.Text("LIVES: " + health, "40px Consolas", "#ffffff");
             this.healthLabel.x = config.Screen.WIDTH * 0.1;
@@ -90,23 +88,6 @@ var scenes;
             console.log("Added Score Label to stage");
         };
         Play2.prototype.addLight = function () {
-            /*// Spot Light
-            this.spotLight = new SpotLight(0xffffff);
-            this.spotLight.position.set(20, 40, -15);
-            this.spotLight.castShadow = true;
-            this.spotLight.intensity = 2;
-            this.spotLight.lookAt(new Vector3(0, 0, 0));
-            this.spotLight.shadowCameraNear = 2;
-            this.spotLight.shadowCameraFar = 200;
-            this.spotLight.shadowCameraLeft = -5;
-            this.spotLight.shadowCameraRight = 5;
-            this.spotLight.shadowCameraTop = 5;
-            this.spotLight.shadowCameraBottom = -5;
-            this.spotLight.shadowMapWidth = 2048;
-            this.spotLight.shadowMapHeight = 2048;
-            this.spotLight.shadowDarkness = 0.5;
-            this.spotLight.name = "Spot Light";
-            this.add(this.spotLight);*/
             this.ambientLight = new AmbientLight(0xf0f0f0);
             this.add(this.ambientLight);
         };
@@ -264,7 +245,7 @@ var scenes;
         //add projectiles to attack player
         Play2.prototype.sendBall = function () {
             this.ball = new Physijs.ConvexMesh(new SphereGeometry(0.5, 32, 32), Physijs.createMaterial(new LambertMaterial({ color: 0xff0000 })), 5);
-            this.ball.position.set(this.player.position.x, 2, -350);
+            this.ball.position.set(this.player.position.x, 2, -312);
             this.ball.name = "Ball";
             this.add(this.ball);
             console.log("ball sent");

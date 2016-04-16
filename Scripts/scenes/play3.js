@@ -267,7 +267,7 @@ var scenes;
         //add projectiles to attack player
         Play3.prototype.sendBall = function () {
             this.ball = new Physijs.ConvexMesh(new SphereGeometry(0.5, 32, 32), Physijs.createMaterial(new LambertMaterial({ color: 0xff0000 })), 5);
-            this.ball.position.set(this.player.position.x, 3, -350);
+            this.ball.position.set(this.player.position.x, 3, -312);
             this.ball.name = "Ball";
             this.add(this.ball);
             console.log("ball sent");
