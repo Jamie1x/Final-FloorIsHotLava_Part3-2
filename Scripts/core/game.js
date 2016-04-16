@@ -50,6 +50,7 @@ var stats;
 var canvas;
 var assets;
 var manifest = [
+    { id: "music", src: "../../Assets/audio/music.mp3" },
     { id: "land", src: "../../Assets/audio/Land.wav" },
     { id: "hit", src: "../../Assets/audio/hit.wav" },
     { id: "coin", src: "../../Assets/audio/coin.mp3" },
@@ -85,6 +86,7 @@ function init() {
     changeScene();
     // Add framerate stats
     addStatsObject();
+    createjs.Sound.play("music", 0, 0, 0, 100);
     document.body.appendChild(renderer.domElement);
     gameLoop(); // render the scene	
     // setup the resize event listener
@@ -118,7 +120,7 @@ function gameLoop() {
 // Setup default renderer
 function setupRenderer() {
     renderer = new Renderer({ antialias: true });
-    renderer.setClearColor(0x404040, 1.0);
+    renderer.setClearColor(0x000000, 1.0);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(CScreen.WIDTH, CScreen.HEIGHT);
     renderer.shadowMap.enabled = true;
