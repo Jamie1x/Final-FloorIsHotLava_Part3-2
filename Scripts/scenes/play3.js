@@ -246,7 +246,11 @@ var scenes;
                     self.coins[count].receiveShadow = true;
                     self.coins[count].castShadow = true;
                     self.coins[count].name = "Coin";
-                    self.setCoinPosition(self.coins[count]);
+                    self.coins[count].position.x = self.blocks[count * 2].position.x;
+                    self.coins[count].position.y = 5;
+                    self.coins[count].position.z = self.blocks[count * 2].position.z;
+                    self.add(self.coins[count]);
+                    //self.setCoinPosition(self.coins[count]);
                     console.log("Added Coin Mesh to Scene, at position: " + self.coins[count].position);
                 }
             });
@@ -458,7 +462,6 @@ var scenes;
                     score++;
                     this.scoreLabel.text = "SCORE: " + score;
                     this.remove(event);
-                    this.setCoinPosition(event);
                 }
                 if (event.name === "Finish") {
                     // Exit Pointer Lock

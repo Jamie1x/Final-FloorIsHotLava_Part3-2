@@ -72,7 +72,8 @@ module scenes {
         private healthLabel: createjs.Text;
         //private score: number;
         private coins: Physijs.ConcaveMesh[];
-        private coinCount: number = 10;
+        private blocks: Physijs.ConvexMesh[];
+        private coinCount: number = 5;
         private blockCount: number = 10;
         private gameOver: boolean;
 
@@ -296,18 +297,22 @@ module scenes {
 
         //add random blocks to scene
         private addBlocks(): void {
-            for (var i: number = 0; i < this.blockCount; i++) {
+            var self = this;
+
+            this.blocks = new Array<Physijs.ConvexMesh>();
+
+            for (var i: number = 0; i < self.blockCount; i++) {
                 var x: number = Math.random() * 10 + 1;
                 var z: number = Math.random() * 10 + 1;
-                var block = new Physijs.ConvexMesh(
+                self.blocks[i] = new Physijs.ConvexMesh(
                     new BoxGeometry(x, 1, z),
                     Physijs.createMaterial(new LambertMaterial()),
                     0
                 );
                 var rand: number = Math.floor(Math.random() * 20) - 10;
-                block.position.set(rand, 1, i * -15);
-                block.name = "Ground";
-                this.add(block);
+                self.blocks[i].position.set(rand, 1, i * -15);
+                self.blocks[i].name = "Ground";
+                self.add(self.blocks[i]);
             }
         }
         /**
@@ -332,7 +337,10 @@ module scenes {
                     self.coins[count].receiveShadow = true;
                     self.coins[count].castShadow = true;
                     self.coins[count].name = "Coin";
-                    self.setCoinPosition(self.coins[count]);
+                    self.coins[count].position.x = self.blocks[count * 2].position.x;
+                    self.coins[count].position.y = 5;
+                    self.coins[count].position.z = self.blocks[count * 2].position.z;
+                    self.add(self.coins[count]);
                     console.log("Added Coin Mesh to Scene, at position: " + self.coins[count].position);
                 }
             });
@@ -559,7 +567,6 @@ module scenes {
                     score++;
                     this.scoreLabel.text = "SCORE: " + score;
                     this.remove(event);
-                    this.setCoinPosition(event);
                 }
                 if (event.name === "Finish") {
                     // Exit Pointer Lock

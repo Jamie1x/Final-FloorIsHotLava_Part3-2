@@ -196,14 +196,16 @@ var scenes;
         };
         //add random blocks to scene
         Play2.prototype.addBlocks = function () {
-            for (var i = 0; i < this.blockCount; i++) {
+            var self = this;
+            this.blocks = new Array();
+            for (var i = 0; i < self.blockCount; i++) {
                 var x = Math.random() * 10 + 1;
                 var z = Math.random() * 10 + 1;
-                var block = new Physijs.ConvexMesh(new BoxGeometry(x, 1, z), Physijs.createMaterial(new LambertMaterial()), 0);
+                self.blocks[i] = new Physijs.ConvexMesh(new BoxGeometry(x, 1, z), Physijs.createMaterial(new LambertMaterial()), 0);
                 var rand = Math.floor(Math.random() * 20) - 10;
-                block.position.set(rand, 1, i * -15);
-                block.name = "Ground";
-                this.add(block);
+                self.blocks[i].position.set(rand, 1, i * -15);
+                self.blocks[i].name = "Ground";
+                self.add(self.blocks[i]);
             }
         };
         /**
@@ -224,7 +226,10 @@ var scenes;
                     self.coins[count].receiveShadow = true;
                     self.coins[count].castShadow = true;
                     self.coins[count].name = "Coin";
-                    self.setCoinPosition(self.coins[count]);
+                    self.coins[count].position.x = self.blocks[count * 2].position.x;
+                    self.coins[count].position.y = 5;
+                    self.coins[count].position.z = self.blocks[count * 2].position.z;
+                    self.add(self.coins[count]);
                     console.log("Added Coin Mesh to Scene, at position: " + self.coins[count].position);
                 }
             });
@@ -436,7 +441,6 @@ var scenes;
                     score++;
                     this.scoreLabel.text = "SCORE: " + score;
                     this.remove(event);
-                    this.setCoinPosition(event);
                 }
                 if (event.name === "Finish") {
                     // Exit Pointer Lock
