@@ -64,7 +64,7 @@ module scenes {
         public start(): void {
             this._youWinLabel = new createjs.Text(
                 "YOU WIN",
-                "80px Consolas",
+                "80px Comic Sans MS",
                 "#ff0000");
             this._youWinLabel.regX = this._youWinLabel.getMeasuredWidth() * 0.5;
             this._youWinLabel.regY = this._youWinLabel.getMeasuredLineHeight() * 0.5;
@@ -80,7 +80,7 @@ module scenes {
             //current score label
             this._scoreLabel = new createjs.Text(
                 "Your Score: " + score,
-                "40px Consolas",
+                "40px Comic Sans MS",
                 "#ff0000");
             this._scoreLabel.regX = this._scoreLabel.getMeasuredWidth() * 0.5;
             this._scoreLabel.regY = this._scoreLabel.getMeasuredLineHeight() * 0.5;
@@ -91,7 +91,7 @@ module scenes {
             //high score label
             this._highScoreLabel = new createjs.Text(
                 "High Score: " + highScore,
-                "40px Consolas",
+                "40px Comic Sans MS",
                 "#ff0000");
             this._highScoreLabel.regX = this._highScoreLabel.getMeasuredWidth() * 0.5;
             this._highScoreLabel.regY = this._highScoreLabel.getMeasuredLineHeight() * 0.5;

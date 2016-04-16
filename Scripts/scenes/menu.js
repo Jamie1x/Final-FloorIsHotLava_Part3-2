@@ -62,7 +62,7 @@ var scenes;
          * @return void
          */
         Menu.prototype.start = function () {
-            this._gameLabel = new createjs.Text("THE FLOOR IS HOT LAVA", "80px Consolas", "#ff0000");
+            this._gameLabel = new createjs.Text("THE FLOOR IS HOT LAVA", "80px Comic Sans MS", "#ff0000");
             this._gameLabel.regX = this._gameLabel.getMeasuredWidth() * 0.5;
             this._gameLabel.regY = this._gameLabel.getMeasuredLineHeight() * 0.5;
             this._gameLabel.x = config.Screen.WIDTH * 0.5;
