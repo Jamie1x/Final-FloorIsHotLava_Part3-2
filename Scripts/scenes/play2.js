@@ -227,7 +227,7 @@ var scenes;
                     self.coins[count].castShadow = true;
                     self.coins[count].name = "Coin";
                     self.coins[count].position.x = self.blocks[count * 2].position.x;
-                    self.coins[count].position.y = 5;
+                    self.coins[count].position.y = 3;
                     self.coins[count].position.z = self.blocks[count * 2].position.z;
                     self.add(self.coins[count]);
                     console.log("Added Coin Mesh to Scene, at position: " + self.coins[count].position);
@@ -485,6 +485,7 @@ var scenes;
             this.coins.forEach(function (coin) {
                 coin.setAngularFactor(new Vector3(0, 0, 0));
                 coin.setAngularVelocity(new Vector3(0, 1, 0));
+                coin.setLinearFactor(new Vector3(0, 0, 0));
             });
             this.ball.setLinearFactor(new Vector3(0, 0, 0));
             this.ball.setLinearVelocity(new Vector3(0, 0, 20));
