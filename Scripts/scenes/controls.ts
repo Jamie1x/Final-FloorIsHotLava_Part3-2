@@ -48,7 +48,7 @@ module scenes {
         private _setupCanvas(): void {
             canvas.style.width = "100%";
             canvas.setAttribute("height", config.Screen.HEIGHT.toString());
-            canvas.style.backgroundImage = "url('../Assets/images/bg.png')";
+            canvas.style.backgroundColor = "#000000";
         }
 
 
@@ -80,6 +80,15 @@ module scenes {
          * @return void
          */
         public start(): void {
+            var fire = new createjs.Bitmap(assets.getResult("fire"));
+            fire.scaleX = config.Screen.WIDTH;
+            fire.scaleY = config.Screen.HEIGHT / 10;
+            fire.regX = fire.getBounds().width * 0.5;
+            fire.regY = fire.getBounds().height * 0.5;
+            fire.x = config.Screen.WIDTH * 0.5;
+            fire.y = config.Screen.HEIGHT;
+            this._stage.addChild(fire);
+            
             this._gameLabel = new createjs.Text(
                 "INSTRUCTIONS",
                 "80px Comic Sans MS",

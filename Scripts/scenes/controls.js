@@ -35,7 +35,7 @@ var scenes;
         Controls.prototype._setupCanvas = function () {
             canvas.style.width = "100%";
             canvas.setAttribute("height", config.Screen.HEIGHT.toString());
-            canvas.style.backgroundImage = "url('../Assets/images/bg.png')";
+            canvas.style.backgroundColor = "#000000";
         };
         /**
          * This method sets up default values for class member variables
@@ -62,6 +62,14 @@ var scenes;
          * @return void
          */
         Controls.prototype.start = function () {
+            var fire = new createjs.Bitmap(assets.getResult("fire"));
+            fire.scaleX = config.Screen.WIDTH;
+            fire.scaleY = config.Screen.HEIGHT / 10;
+            fire.regX = fire.getBounds().width * 0.5;
+            fire.regY = fire.getBounds().height * 0.5;
+            fire.x = config.Screen.WIDTH * 0.5;
+            fire.y = config.Screen.HEIGHT;
+            this._stage.addChild(fire);
             this._gameLabel = new createjs.Text("INSTRUCTIONS", "80px Comic Sans MS", "#ff0000");
             this._gameLabel.regX = this._gameLabel.getMeasuredWidth() * 0.5;
             this._gameLabel.regY = this._gameLabel.getMeasuredLineHeight() * 0.5;
