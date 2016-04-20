@@ -55,7 +55,7 @@ var scenes;
          * @return void
          */
         Winner.prototype.start = function () {
-            this._youWinLabel = new createjs.Text("YOU WIN", "80px Consolas", "#ff0000");
+            this._youWinLabel = new createjs.Text("YOU WIN", "80px Comic Sans MS", "#ff0000");
             this._youWinLabel.regX = this._youWinLabel.getMeasuredWidth() * 0.5;
             this._youWinLabel.regY = this._youWinLabel.getMeasuredLineHeight() * 0.5;
             this._youWinLabel.x = config.Screen.WIDTH * 0.5;
@@ -66,14 +66,14 @@ var scenes;
                 highScore = score;
             }
             //current score label
-            this._scoreLabel = new createjs.Text("Your Score: " + score, "40px Consolas", "#ff0000");
+            this._scoreLabel = new createjs.Text("Your Score: " + score, "40px Comic Sans MS", "#ff0000");
             this._scoreLabel.regX = this._scoreLabel.getMeasuredWidth() * 0.5;
             this._scoreLabel.regY = this._scoreLabel.getMeasuredLineHeight() * 0.5;
             this._scoreLabel.x = config.Screen.WIDTH * 0.5;
             this._scoreLabel.y = (config.Screen.HEIGHT * 0.5) - 125;
             this._stage.addChild(this._scoreLabel);
             //high score label
-            this._highScoreLabel = new createjs.Text("High Score: " + highScore, "40px Consolas", "#ff0000");
+            this._highScoreLabel = new createjs.Text("High Score: " + highScore, "40px Comic Sans MS", "#ff0000");
             this._highScoreLabel.regX = this._highScoreLabel.getMeasuredWidth() * 0.5;
             this._highScoreLabel.regY = this._highScoreLabel.getMeasuredLineHeight() * 0.5;
             this._highScoreLabel.x = config.Screen.WIDTH * 0.5;

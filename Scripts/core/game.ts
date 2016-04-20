@@ -67,7 +67,13 @@ var manifest = [
     { id: "ExitButton", src: "../../Assets/images/ExitButton.png" },
     { id: "ControlsButton", src: "../../Assets/images/ControlsButton.png" },
     { id: "Level2Button", src: "../../Assets/images/Level2Button.png" },
-    { id: "Level3Button", src: "../../Assets/images/Level3Button.png" }
+    { id: "Level3Button", src: "../../Assets/images/Level3Button.png" },
+    { id: "wasd", src: "../../Assets/images/WASD.png" },
+    { id: "arrows", src: "../../Assets/images/ARROWS.png" },
+    { id: "space", src: "../../Assets/images/SPACE.png" },
+    { id: "mouse", src: "../../Assets/images/MOUSE.png" },
+    { id: "ball", src: "../../Assets/images/ball.png" },
+    { id: "background", src: "../../Assets/images/bg.png" }
 ];
 
 function preload(): void {
