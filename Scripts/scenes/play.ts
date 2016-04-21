@@ -141,8 +141,8 @@ module scenes {
             // Add health Label
             this.healthLabel = new createjs.Text(
                 "LIVES: " + health,
-                "40px Consolas",
-                "#ffffff"
+                "25px 'Press Start 2P'",
+                "#000000"
             );
             this.healthLabel.x = config.Screen.WIDTH * 0.1;
             this.healthLabel.y = (config.Screen.HEIGHT * 0.15) * 0.20;
@@ -152,8 +152,8 @@ module scenes {
             // Add Score Label
             this.scoreLabel = new createjs.Text(
                 "SCORE: " + score,
-                "40px Consolas",
-                "#ffffff"
+                "25px 'Press Start 2P'",
+                "#000000"
             );
             this.scoreLabel.x = config.Screen.WIDTH * 0.8;
             this.scoreLabel.y = (config.Screen.HEIGHT * 0.15) * 0.20;
@@ -287,7 +287,7 @@ module scenes {
             //end
             var end = new Physijs.ConvexMesh(
                 new BoxGeometry(3, 2, 3),
-                Physijs.createMaterial(new LambertMaterial()),
+                Physijs.createMaterial(new LambertMaterial({ color: 0x00ff00 })),
                 0
             );
             end.position.set(0, 1, -150);

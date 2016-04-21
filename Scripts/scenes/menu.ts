@@ -18,9 +18,9 @@ module scenes {
         private _stage: createjs.Stage;
         private _gameLabel: createjs.Text;
         private _startButton: createjs.Bitmap;
-        private _controlsButton: createjs.Bitmap;   
-        private _level2Button: createjs.Bitmap;        
-        private _level3Button: createjs.Bitmap;                     
+        private _controlsButton: createjs.Bitmap;
+        private _level2Button: createjs.Bitmap;
+        private _level3Button: createjs.Bitmap;
 
         /**
          * Empty Constructor - calls _initialize and start methods
@@ -39,7 +39,7 @@ module scenes {
         private _setupCanvas(): void {
             canvas.style.width = "100%";
             canvas.setAttribute("height", config.Screen.HEIGHT.toString());
-            canvas.style.backgroundColor = "#000000";
+            canvas.style.backgroundImage = "url('../Assets/images/bg.gif')";
         }
 
 
@@ -71,10 +71,11 @@ module scenes {
          * @return void
          */
         public start(): void {
+            
             this._gameLabel = new createjs.Text(
                 "THE FLOOR IS HOT LAVA",
-                "80px Comic Sans MS",
-                "#ff0000");
+                "60px 'Press Start 2P'",
+                "#000000");
             this._gameLabel.regX = this._gameLabel.getMeasuredWidth() * 0.5;
             this._gameLabel.regY = this._gameLabel.getMeasuredLineHeight() * 0.5;
             this._gameLabel.x = config.Screen.WIDTH * 0.5;
@@ -101,7 +102,7 @@ module scenes {
                 currentScene = config.Scene.PLAY;
                 changeScene();
             });
-            
+
             //controls button
             this._controlsButton = new createjs.Bitmap(assets.getResult("ControlsButton"));
             this._controlsButton.regX = this._controlsButton.getBounds().width * 0.5;
@@ -122,7 +123,7 @@ module scenes {
                 currentScene = config.Scene.CONTROLS;
                 changeScene();
             });
-            
+
             //level2 button
             this._level2Button = new createjs.Bitmap(assets.getResult("Level2Button"));
             this._level2Button.regX = this._level2Button.getBounds().width * 0.5;
@@ -145,7 +146,7 @@ module scenes {
                 currentScene = config.Scene.PLAY2;
                 changeScene();
             });
-            
+
             //level3 button
             this._level3Button = new createjs.Bitmap(assets.getResult("Level3Button"));
             this._level3Button.regX = this._level3Button.getBounds().width * 0.5;

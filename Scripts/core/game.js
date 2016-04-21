@@ -66,8 +66,8 @@ var manifest = [
     { id: "space", src: "../../Assets/images/SPACE.png" },
     { id: "mouse", src: "../../Assets/images/MOUSE.png" },
     { id: "ball", src: "../../Assets/images/ball.png" },
-    { id: "background", src: "../../Assets/images/bg.png" },
-    { id: "fire", src: "../../Assets/images/fire.png" }
+    { id: "cube", src: "../../Assets/images/cube.png" },
+    { id: "coinPic", src: "../../Assets/images/coin.png" }
 ];
 function preload() {
     assets = new createjs.LoadQueue();

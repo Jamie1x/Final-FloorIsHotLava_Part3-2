@@ -30,6 +30,10 @@ module scenes {
         private _jumpLabel: createjs.Text;
         private _ballLabel: createjs.Bitmap;
         private _avoidLabel: createjs.Text;
+        private _cubeLabel: createjs.Bitmap;
+        private _objectiveLabel: createjs.Text;
+        private _coinLabel: createjs.Bitmap;
+        private _coinTextLabel: createjs.Text;
 
         /**
          * Empty Constructor - calls _initialize and start methods
@@ -48,7 +52,7 @@ module scenes {
         private _setupCanvas(): void {
             canvas.style.width = "100%";
             canvas.setAttribute("height", config.Screen.HEIGHT.toString());
-            canvas.style.backgroundColor = "#000000";
+            canvas.style.backgroundImage = "url('../Assets/images/bg.gif')";
         }
 
 
@@ -80,31 +84,22 @@ module scenes {
          * @return void
          */
         public start(): void {
-            var fire = new createjs.Bitmap(assets.getResult("fire"));
-            fire.scaleX = config.Screen.WIDTH;
-            fire.scaleY = config.Screen.HEIGHT / 10;
-            fire.regX = fire.getBounds().width * 0.5;
-            fire.regY = fire.getBounds().height * 0.5;
-            fire.x = config.Screen.WIDTH * 0.5;
-            fire.y = config.Screen.HEIGHT;
-            this._stage.addChild(fire);
-            
             this._gameLabel = new createjs.Text(
                 "INSTRUCTIONS",
-                "80px Comic Sans MS",
-                "#ff0000");
+                "60px 'Press Start 2P'",
+                "#000000");
             this._gameLabel.regX = this._gameLabel.getMeasuredWidth() * 0.5;
             this._gameLabel.regY = this._gameLabel.getMeasuredLineHeight() * 0.5;
             this._gameLabel.x = config.Screen.WIDTH * 0.5;
-            this._gameLabel.y = (config.Screen.HEIGHT * 0.5) - 300;
+            this._gameLabel.y = (config.Screen.HEIGHT * 0.5) - 280;
             this._stage.addChild(this._gameLabel);
 
             //start button
             this._startButton = new createjs.Bitmap(assets.getResult("StartButton"));
             this._startButton.regX = this._startButton.getBounds().width * 0.5;
             this._startButton.regY = this._startButton.getBounds().height * 0.5;
-            this._startButton.x = config.Screen.WIDTH * 0.5;
-            this._startButton.y = config.Screen.HEIGHT * 0.5;
+            this._startButton.x = (config.Screen.WIDTH * 0.5) + 570;
+            this._startButton.y = (config.Screen.HEIGHT * 0.5) + 250;
             this._stage.addChild(this._startButton);
 
             this._startButton.on("mouseover", (event: createjs.MouseEvent) => {
@@ -125,18 +120,18 @@ module scenes {
             this._wasdLabel.regX = this._wasdLabel.getBounds().width * 0.5;
             this._wasdLabel.regY = this._wasdLabel.getBounds().height * 0.5;
             this._wasdLabel.x = (config.Screen.WIDTH * 0.5) - 100;
-            this._wasdLabel.y = (config.Screen.HEIGHT * 0.5) - 150;
+            this._wasdLabel.y = (config.Screen.HEIGHT * 0.5);
             this._stage.addChild(this._wasdLabel);
             
             //move instructions
             this._moveLabel = new createjs.Text(
                 "use WASD (or arrow keys) to move your player",
-                "20px Comic Sans MS",
-                "#ff0000");
+                "15px 'Press Start 2P'",
+                "#000000");
             this._moveLabel.regX = this._moveLabel.getMeasuredWidth() * 0.5;
             this._moveLabel.regY = this._moveLabel.getMeasuredLineHeight() * 0.5;
             this._moveLabel.x = config.Screen.WIDTH * 0.5;
-            this._moveLabel.y = (config.Screen.HEIGHT * 0.5) - 75;
+            this._moveLabel.y = (config.Screen.HEIGHT * 0.5) + 75;
             this._stage.addChild(this._moveLabel);
             
             //arrow Label
@@ -144,7 +139,7 @@ module scenes {
             this._arrowLabel.regX = this._arrowLabel.getBounds().width * 0.5;
             this._arrowLabel.regY = this._arrowLabel.getBounds().height * 0.5;
             this._arrowLabel.x = (config.Screen.WIDTH * 0.5) + 100;
-            this._arrowLabel.y = (config.Screen.HEIGHT * 0.5) - 150;
+            this._arrowLabel.y = (config.Screen.HEIGHT * 0.5);
             this._stage.addChild(this._arrowLabel);
             
             //space Label
@@ -158,8 +153,8 @@ module scenes {
             //jump instructions
             this._jumpLabel = new createjs.Text(
                 "use the SPACEBAR to jump",
-                "20px Comic Sans MS",
-                "#ff0000");
+                "15px 'Press Start 2P'",
+                "#000000");
             this._jumpLabel.regX = this._jumpLabel.getMeasuredWidth() * 0.5;
             this._jumpLabel.regY = this._jumpLabel.getMeasuredLineHeight() * 0.5;
             this._jumpLabel.x = (config.Screen.WIDTH * 0.5) - 300;
@@ -177,8 +172,8 @@ module scenes {
             //aim instructions
             this._aimLabel = new createjs.Text(
                 "move your MOUSE to aim",
-                "20px Comic Sans MS",
-                "#ff0000");
+                "15px 'Press Start 2P'",
+                "#000000");
             this._aimLabel.regX = this._aimLabel.getMeasuredWidth() * 0.5;
             this._aimLabel.regY = this._aimLabel.getMeasuredLineHeight() * 0.5;
             this._aimLabel.x = (config.Screen.WIDTH * 0.5) + 300;
@@ -196,13 +191,51 @@ module scenes {
             //avoid instructions
             this._avoidLabel = new createjs.Text(
                 "avoid oncoming projectiles",
-                "20px Comic Sans MS",
-                "#ff0000");
+                "15px 'Press Start 2P'",
+                "#000000");
             this._avoidLabel.regX = this._avoidLabel.getMeasuredWidth() * 0.5;
             this._avoidLabel.regY = this._avoidLabel.getMeasuredLineHeight() * 0.5;
             this._avoidLabel.x = (config.Screen.WIDTH * 0.5) + 450;
             this._avoidLabel.y = (config.Screen.HEIGHT * 0.5) - 150;
             this._stage.addChild(this._avoidLabel);
+            
+            //cube Label
+            this._cubeLabel = new createjs.Bitmap(assets.getResult("cube"));
+            this._cubeLabel.regX = this._cubeLabel.getBounds().width * 0.5;
+            this._cubeLabel.regY = this._cubeLabel.getBounds().height * 0.5;
+            this._cubeLabel.x = (config.Screen.WIDTH * 0.5) - 450;
+            this._cubeLabel.y = (config.Screen.HEIGHT * 0.5) - 200;
+            this._stage.addChild(this._cubeLabel);
+            
+            //objective instructions
+            this._objectiveLabel = new createjs.Text(
+                "reach the green cube to win",
+                "15px 'Press Start 2P'",
+                "#000000");
+            this._objectiveLabel.regX = this._objectiveLabel.getMeasuredWidth() * 0.5;
+            this._objectiveLabel.regY = this._objectiveLabel.getMeasuredLineHeight() * 0.5;
+            this._objectiveLabel.x = (config.Screen.WIDTH * 0.5) - 450;
+            this._objectiveLabel.y = (config.Screen.HEIGHT * 0.5) - 150;
+            this._stage.addChild(this._objectiveLabel);
+            
+            //coin Label
+            this._coinLabel = new createjs.Bitmap(assets.getResult("coinPic"));
+            this._coinLabel.regX = this._coinLabel.getBounds().width * 0.5;
+            this._coinLabel.regY = this._coinLabel.getBounds().height * 0.5;
+            this._coinLabel.x = (config.Screen.WIDTH * 0.5);
+            this._coinLabel.y = (config.Screen.HEIGHT * 0.5) - 150;
+            this._stage.addChild(this._coinLabel);
+            
+            //coinText instructions
+            this._coinTextLabel = new createjs.Text(
+                "collect coins to score points",
+                "15px 'Press Start 2P'",
+                "#000000");
+            this._coinTextLabel.regX = this._coinTextLabel.getMeasuredWidth() * 0.5;
+            this._coinTextLabel.regY = this._coinTextLabel.getMeasuredLineHeight() * 0.5;
+            this._coinTextLabel.x = (config.Screen.WIDTH * 0.5);
+            this._coinTextLabel.y = (config.Screen.HEIGHT * 0.5) - 100;
+            this._stage.addChild(this._coinTextLabel);
         }
 
         /**

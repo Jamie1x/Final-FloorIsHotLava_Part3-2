@@ -75,13 +75,13 @@ var scenes;
         Play2.prototype.setupScoreboard = function () {
             // initialize  score and health values
             // Add health Label
-            this.healthLabel = new createjs.Text("LIVES: " + health, "40px Consolas", "#ffffff");
+            this.healthLabel = new createjs.Text("LIVES: " + health, "25px 'Press Start 2P'", "#000000");
             this.healthLabel.x = config.Screen.WIDTH * 0.1;
             this.healthLabel.y = (config.Screen.HEIGHT * 0.15) * 0.20;
             this.stage.addChild(this.healthLabel);
             console.log("Added health Label to stage");
             // Add Score Label
-            this.scoreLabel = new createjs.Text("SCORE: " + score, "40px Consolas", "#ffffff");
+            this.scoreLabel = new createjs.Text("SCORE: " + score, "25px 'Press Start 2P'", "#000000");
             this.scoreLabel.x = config.Screen.WIDTH * 0.8;
             this.scoreLabel.y = (config.Screen.HEIGHT * 0.15) * 0.20;
             this.stage.addChild(this.scoreLabel);
@@ -189,7 +189,7 @@ var scenes;
         };
         Play2.prototype.addEndPlatform = function () {
             //end
-            var end = new Physijs.ConvexMesh(new BoxGeometry(3, 2, 3), Physijs.createMaterial(new LambertMaterial()), 0);
+            var end = new Physijs.ConvexMesh(new BoxGeometry(3, 2, 3), Physijs.createMaterial(new LambertMaterial({ color: 0x00ff00 })), 0);
             end.position.set(0, 1, -300);
             end.name = "Finish";
             this.add(end);
@@ -250,7 +250,7 @@ var scenes;
         //add projectiles to attack player
         Play2.prototype.sendBall = function () {
             this.ball = new Physijs.ConvexMesh(new SphereGeometry(0.5, 32, 32), Physijs.createMaterial(new LambertMaterial({ color: 0xff0000 })), 5);
-            this.ball.position.set(this.player.position.x, 2, -312);
+            this.ball.position.set(this.player.position.x, 3, -312);
             this.ball.name = "Ball";
             this.add(this.ball);
             console.log("ball sent");

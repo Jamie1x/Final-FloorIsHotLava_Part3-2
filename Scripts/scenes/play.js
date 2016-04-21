@@ -76,13 +76,13 @@ var scenes;
             score = 0;
             health = 3;
             // Add health Label
-            this.healthLabel = new createjs.Text("LIVES: " + health, "40px Consolas", "#ffffff");
+            this.healthLabel = new createjs.Text("LIVES: " + health, "25px 'Press Start 2P'", "#000000");
             this.healthLabel.x = config.Screen.WIDTH * 0.1;
             this.healthLabel.y = (config.Screen.HEIGHT * 0.15) * 0.20;
             this.stage.addChild(this.healthLabel);
             console.log("Added health Label to stage");
             // Add Score Label
-            this.scoreLabel = new createjs.Text("SCORE: " + score, "40px Consolas", "#ffffff");
+            this.scoreLabel = new createjs.Text("SCORE: " + score, "25px 'Press Start 2P'", "#000000");
             this.scoreLabel.x = config.Screen.WIDTH * 0.8;
             this.scoreLabel.y = (config.Screen.HEIGHT * 0.15) * 0.20;
             this.stage.addChild(this.scoreLabel);
@@ -190,7 +190,7 @@ var scenes;
         };
         Play.prototype.addEndPlatform = function () {
             //end
-            var end = new Physijs.ConvexMesh(new BoxGeometry(3, 2, 3), Physijs.createMaterial(new LambertMaterial()), 0);
+            var end = new Physijs.ConvexMesh(new BoxGeometry(3, 2, 3), Physijs.createMaterial(new LambertMaterial({ color: 0x00ff00 })), 0);
             end.position.set(0, 1, -150);
             end.name = "Finish";
             this.add(end);
